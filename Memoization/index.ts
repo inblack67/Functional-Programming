@@ -1,10 +1,14 @@
 // Memoization it is an optimization technique. It consists of storing function result instead of recomputing it each time. In other words, it is a « cache » for function invocations. Since function results are cached, they can be returned immediately when given function is invoked with the same arguments. A function can only be memoized if it is referentially transparent.
 
 interface MyCache {
-    arithmeticOperation: string;
+    arithmeticOperation: MyOperations;
     args: number[];
     result: number;
 }
+
+const Operations = [ 'sum', 'subtract', 'divide', 'multiply' ] as const;
+
+type MyOperations = typeof Operations[ number ];
 
 const cache: MyCache = { args: null, arithmeticOperation: null, result: null };
 
